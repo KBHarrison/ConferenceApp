@@ -17,6 +17,8 @@
 		FCBD57DC239AAF5C00EA8301 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBD57DB239AAF5C00EA8301 /* MainController.swift */; };
 		FCBD57DE239AD54700EA8301 /* NotesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBD57DD239AD54700EA8301 /* NotesTableController.swift */; };
 		FCBD57E0239AD65E00EA8301 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBD57DF239AD65E00EA8301 /* Notes.swift */; };
+		FCBDBE0423A2A3500048F83C /* Date+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBDBE0323A2A3500048F83C /* Date+ToString.swift */; };
+		FCBDBE0823A2B3CB0048F83C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBDBE0723A2B3CB0048F83C /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		FCBD57DB239AAF5C00EA8301 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		FCBD57DD239AD54700EA8301 /* NotesTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableController.swift; sourceTree = "<group>"; };
 		FCBD57DF239AD65E00EA8301 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
+		FCBDBE0323A2A3500048F83C /* Date+ToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ToString.swift"; sourceTree = "<group>"; };
+		FCBDBE0723A2B3CB0048F83C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 				FCBD57D5239AAB5B00EA8301 /* Info.plist */,
 				FCBD57DD239AD54700EA8301 /* NotesTableController.swift */,
 				FCBD57DF239AD65E00EA8301 /* Notes.swift */,
+				FCBDBE0323A2A3500048F83C /* Date+ToString.swift */,
+				FCBDBE0723A2B3CB0048F83C /* DetailViewController.swift */,
 			);
 			path = "Project 4 Harrison Kyle";
 			sourceTree = "<group>";
@@ -201,8 +207,10 @@
 				FCBD57CC239AAB5A00EA8301 /* ViewController.swift in Sources */,
 				FCBD57C8239AAB5A00EA8301 /* AppDelegate.swift in Sources */,
 				FCBD57DE239AD54700EA8301 /* NotesTableController.swift in Sources */,
+				FCBDBE0423A2A3500048F83C /* Date+ToString.swift in Sources */,
 				FCBD57CA239AAB5A00EA8301 /* SceneDelegate.swift in Sources */,
 				FCBD57E0239AD65E00EA8301 /* Notes.swift in Sources */,
+				FCBDBE0823A2B3CB0048F83C /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

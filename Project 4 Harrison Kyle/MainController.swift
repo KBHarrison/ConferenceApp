@@ -10,12 +10,23 @@ import Foundation
 import UIKit
 import Speech
 
+
+@IBDesignable
 class MainController : ViewController, SFSpeechRecognizerDelegate {
     
+    //    MARK: - Properties
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     var speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
+    
+    //    MARK: - Constants
+    
+    struct Keys {
+        let notesKey = "Notes"
+        let datesKey = "Dates"
+    }
+    
     
     //    MARK: - Outlets
     
@@ -25,10 +36,11 @@ class MainController : ViewController, SFSpeechRecognizerDelegate {
     
     //MARK: - Actions
     
-    
     @IBAction func Save(_ sender: Any) {
         NotesAccess.shared.notes.append(textView.text)
         NotesAccess.shared.noteDates.append(NSDate() as Date)
+        print(NotesAccess.shared.notes.count)
+        saveDefaults()
     }
     
     @IBAction func PushButton(_ sender: Any) {
@@ -37,7 +49,7 @@ class MainController : ViewController, SFSpeechRecognizerDelegate {
             audioEngine.stop()
             recognitionRequest?.endAudio()
             recordButton.isEnabled = false
-            recordButton.setTitle("Start Recording", for: .normal)
+            recordButton.setTitle("New Recording", for: .normal)
         } else {
             startRecording()
             recordButton.setTitle("Stop Recording", for: .normal)
@@ -50,9 +62,51 @@ class MainController : ViewController, SFSpeechRecognizerDelegate {
         super.viewDidLoad()
         recordButton.setTitle("Start Recording", for: .normal) 
         speechRecognizer?.delegate = self
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        restoreDefaults()
+        addGradient()
+        NotificationCenter.default.addObserver(self, selector: #selector(callSaveDefaults(_:)), name: Notification.Name(rawValue: "saveDefaults"), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(false)
+        saveDefaults()
     }
     
     //    MARK: - Helper Functions
+    
+    func addGradient() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor.white.cgColor, UIColor.yellow.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        gradientLayer.opacity = 0.5
+        gradientLayer.frame = self.view.bounds
+        view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    public func saveDefaults() {
+        let defaults = UserDefaults.standard
+        defaults.set(NotesAccess.shared.notes, forKey: "Notes") //TODO: Reference Keys.Notes
+        defaults.set(NotesAccess.shared.noteDates, forKey: "Dates")
+        
+    }
+    
+    @objc func callSaveDefaults(_ notification: Notification) {
+        saveDefaults()
+    }
+    
+    func restoreDefaults() {
+        
+        let defaults = UserDefaults.standard
+        if let notesArray = defaults.array(forKey: "Notes" ) as? [String] {
+            if let dateArray =  defaults.array(forKey: "Dates") as? [Date] {
+                NotesAccess.shared.notes = notesArray
+                NotesAccess.shared.noteDates = dateArray
+            }
+        }
+    }
     
     func startRecording() {
         
