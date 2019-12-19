@@ -1,0 +1,6 @@
+framework module Pods_Project_4_Harrison_Kyle {
+  umbrella header "Pods-Project 4 Harrison Kyle-umbrella.h"
+
+  export *
+  module * { export * }
+}
